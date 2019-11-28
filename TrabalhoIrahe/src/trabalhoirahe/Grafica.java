@@ -1,6 +1,8 @@
 
 package trabalhoirahe;
 
+import trabalhoirahe.Funcionario.FuncionarioDAO;
+import trabalhoirahe.Funcionario.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,15 +42,11 @@ public class Grafica extends javax.swing.JFrame {
     private void LimparCampos(){
        txtEmpresa.setText(null);
        txtDATA.setText(null);
-
        txtCPF.setText(null);
        txtF1.setText(null);
        txtF2.setText(null);
        txtF3.setText(null);
-       txtF4.setText(null);
-       txtF5.setText(null);
        txtF6.setText(null);
-       txtF7.setText(null);
           
     };
     public boolean ValidaCampos(){
@@ -117,19 +115,13 @@ public class Grafica extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         txtF1 = new javax.swing.JTextField();
         txtF2 = new javax.swing.JTextField();
         txtF3 = new javax.swing.JTextField();
-        txtF4 = new javax.swing.JTextField();
-        txtF5 = new javax.swing.JTextField();
         txtF6 = new javax.swing.JTextField();
-        txtF7 = new javax.swing.JTextField();
         jb_editar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         ComboBox3 = new javax.swing.JComboBox<>();
@@ -149,7 +141,7 @@ public class Grafica extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("SEI - Sistema para Escola de Idiomas");
+        jLabel6.setText("Sistema Médico");
         jLabel6.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhoirahe/Licourt-Idiomas-frases.png"))); // NOI18N
@@ -300,7 +292,7 @@ public class Grafica extends javax.swing.JFrame {
 
         jPanel5.getAccessibleContext().setAccessibleName("Cadastro de Funcionario");
 
-        jTabbedPane1.addTab("Cadastro", jPanel1);
+        jTabbedPane1.addTab("Cadastro de Funcionário", jPanel1);
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -334,21 +326,9 @@ public class Grafica extends javax.swing.JFrame {
 
         jLabel10.setText("Data de Nascimento:");
 
-        jLabel11.setText("Curso:");
-
-        jLabel12.setText("Turno:");
-
-        jLabel13.setText("Telefone:");
+        jLabel12.setText("Empresa");
 
         jLabel15.setText("Cpf:");
-
-        jLabel16.setText("RG:");
-
-        txtF4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtF4ActionPerformed(evt);
-            }
-        });
 
         jb_editar.setText("Editar");
         jb_editar.addActionListener(new java.awt.event.ActionListener() {
@@ -380,48 +360,32 @@ public class Grafica extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(147, 147, 147)
+                                .addGap(253, 253, 253)
                                 .addComponent(jb_editar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(140, 140, 140)
+                                .addGap(34, 34, 34)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtF4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtF5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel15)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtF6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtF7))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(179, 179, 179)
-                                                .addComponent(jLabel14))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel9)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtF1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel12)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtF2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel10)))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtF3, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                        .addGap(12, 12, 12))
+                                        .addComponent(txtF6, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel14)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jLabel9)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtF1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel12)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtF2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jLabel10))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                        .addComponent(txtF3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(ComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -443,14 +407,8 @@ public class Grafica extends javax.swing.JFrame {
                     .addComponent(txtF3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtF4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtF5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
-                    .addComponent(txtF6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16)
-                    .addComponent(txtF7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtF6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
                 .addGap(51, 51, 51)
@@ -460,7 +418,7 @@ public class Grafica extends javax.swing.JFrame {
                 .addGap(43, 43, 43))
         );
 
-        jTabbedPane1.addTab("Editar Cadastro", jPanel2);
+        jTabbedPane1.addTab("Editar Cadastro de Funcionário", jPanel2);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -640,11 +598,8 @@ public class Grafica extends javax.swing.JFrame {
         String sql = "update aluno set "
         + " nome = '"+txtF1.getText()+"' ,"
         + " nascimento = '"+txtF3.getText()+"' ,"
-        + " curso = '"+txtF5.getText()+"' ,"
-        + " telefone = '"+txtF4.getText()+"' ,"
         + " turno = '"+txtF2.getText()+"' ,"
         + " cpf = '"+txtF6.getText()+"' ,"
-        + " rg = '"+txtF7.getText()+"' "
         + " where id = "+ComboBox3.getSelectedItem().toString();
         try{
             pst = conn.prepareStatement(sql);
@@ -659,10 +614,6 @@ public class Grafica extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_editarActionPerformed
 
-    private void txtF4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtF4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtF4ActionPerformed
-
     private void tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyReleased
         int row = table.getSelectedRow();
         String selection = table.getModel().getValueAt(row, 0).toString();
@@ -674,11 +625,8 @@ public class Grafica extends javax.swing.JFrame {
                 ComboBox3.setSelectedItem(rs.getString("id"));
                 txtF1.setText(rs.getString("nome"));
                 txtF3.setText(rs.getString("nascimento"));
-                txtF5.setText(rs.getString("curso"));
-                txtF4.setText(rs.getString("telefone"));
                 txtF2.setText(rs.getString("turno"));
                 txtF6.setText(rs.getString("cpf"));
-                txtF7.setText(rs.getString("rg"));
             }
         }
         catch(Exception e){
@@ -696,11 +644,8 @@ public class Grafica extends javax.swing.JFrame {
                 ComboBox3.setSelectedItem(rs.getString("id"));
                 txtF1.setText(rs.getString("nome"));
                 txtF3.setText(rs.getString("nascimento"));
-                txtF5.setText(rs.getString("curso"));
-                txtF4.setText(rs.getString("telefone"));
                 txtF2.setText(rs.getString("turno"));
                 txtF6.setText(rs.getString("cpf"));
-                txtF7.setText(rs.getString("rg"));
             }
         }
         catch(Exception e){
@@ -786,12 +731,9 @@ public class Grafica extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -822,10 +764,7 @@ public class Grafica extends javax.swing.JFrame {
     private javax.swing.JTextField txtF1;
     private javax.swing.JTextField txtF2;
     private javax.swing.JTextField txtF3;
-    private javax.swing.JTextField txtF4;
-    private javax.swing.JTextField txtF5;
     private javax.swing.JTextField txtF6;
-    private javax.swing.JTextField txtF7;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

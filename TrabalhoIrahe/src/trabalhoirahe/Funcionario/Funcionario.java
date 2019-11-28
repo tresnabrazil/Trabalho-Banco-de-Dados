@@ -1,4 +1,4 @@
-package trabalhoirahe;
+package trabalhoirahe.Funcionario;
 
 public class Funcionario {
 
