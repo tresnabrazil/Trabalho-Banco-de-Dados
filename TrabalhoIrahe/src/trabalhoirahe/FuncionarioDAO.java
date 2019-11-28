@@ -12,13 +12,16 @@ import javax.swing.JOptionPane;
 
 public class FuncionarioDAO {
     
-        public static void create(Funcionario dto) {
+        public static void create(Funcionario funcionario) {
             
             Connection conn = Conexao.getConnection();
             String sql = "INSERT INTO funcionarios " + "(nome,cpf,dataNascimento,idEmpresa,situacao) " + "values (?,?,?,?,?)";
             try {
                 PreparedStatement stmt = conn.prepareStatement(sql);
-                stmt.setString(1, dto.getNome());
+                stmt.setString(1, funcionario.getNome());
+                stmt.setString(2, funcionario.getCpf());
+                stmt.setString(3, funcionario.getDataNascimento());
+                stmt.setString(4, funcionario.getSituacao());
                 stmt.execute();
                 stmt.close();
 
@@ -32,32 +35,32 @@ public class FuncionarioDAO {
 
         }
         
-         public List<?> listaEmpresas(){
-        
-            List<?> empresas = new ArrayList<>();
-            Connection conn = Conexao.getConnection();
-            String sql = "select * from empresa";
-            
-            try{
-                
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery();
-                
-                while(rs.next()){
-                
-                    Empresa empresa = new Empresa();
-                    empresa.setId(rs.getInt("id"));
-                    empresa.setNome(rs.getString("nome"));   
-                    empresas.add(empresa);
-                }
-                
-            
-            } catch (SQLException ex) {
-                
-                JOptionPane.showMessageDialog(null, "Erro! Por favor verificar o codigo antes de inserir novamente.", "DATABASE ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-            return empresas;
-         }
+//         public List<?> listaEmpresas(){
+//        
+//            List<?> empresas = new ArrayList<>();
+//            Connection conn = Conexao.getConnection();
+//            String sql = "select * from empresa";
+//            
+//            try{
+//                
+//                PreparedStatement stmt = conn.prepareStatement(sql);
+//                ResultSet rs = stmt.executeQuery();
+//                
+//                while(rs.next()){
+//                
+//                    Empresa empresa = new Empresa();
+//                    empresa.setId(rs.getInt("id"));
+//                    empresa.setNome(rs.getString("nome"));   
+//                    empresas.add(empresa);
+//                }
+//                
+//            
+//            } catch (SQLException ex) {
+//                
+//                JOptionPane.showMessageDialog(null, "Erro! Por favor verificar o codigo antes de inserir novamente.", "DATABASE ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//            return empresas;
+//         }
         
         public List<Funcionario> lista(){
         
