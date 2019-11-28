@@ -7,28 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.swing.JOptionPane;
 
 
-public class AlunoDAO {
+public class FuncionarioDAO {
     
-        public static void create(Aluno dto) {
+        public static void create(Funcionario dto) {
             
             Connection conn = Conexao.getConnection();
-            String sql = "INSERT INTO aluno " + "(nome,nascimento,curso,telefone,turno,cpf,rg,sexo,status,cidade) " + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO funcionarios " + "(nome,cpf,dataNascimento,idEmpresa,situacao) " + "values (?,?,?,?,?)";
             try {
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setString(1, dto.getNome());
-                stmt.setString(2, dto.getNascimento());
-                stmt.setString(3, dto.getCurso());
-                stmt.setString(4, dto.getTelefone());
-                stmt.setString(5, dto.getTurno());
-                stmt.setString(6, dto.getCpf());
-                stmt.setString(7, dto.getRg());
-                stmt.setString(8, dto.getSexo());
-                stmt.setString(9, dto.getStatus());
-                stmt.setString(10, dto.getCidade());
                 stmt.execute();
                 stmt.close();
 
@@ -42,11 +32,11 @@ public class AlunoDAO {
 
         }
         
-        public List<Aluno> lista(){
+         public List<?> listaEmpresas(){
         
-            List<Aluno> resultados = new ArrayList<Aluno>();
+            List<?> empresas = new ArrayList<>();
             Connection conn = Conexao.getConnection();
-            String sql = "select * from aluno";
+            String sql = "select * from empresa";
             
             try{
                 
@@ -55,19 +45,36 @@ public class AlunoDAO {
                 
                 while(rs.next()){
                 
-                    Aluno a = new Aluno();
+                    Empresa empresa = new Empresa();
+                    empresa.setId(rs.getInt("id"));
+                    empresa.setNome(rs.getString("nome"));   
+                    empresas.add(empresa);
+                }
+                
+            
+            } catch (SQLException ex) {
+                
+                JOptionPane.showMessageDialog(null, "Erro! Por favor verificar o codigo antes de inserir novamente.", "DATABASE ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            return empresas;
+         }
+        
+        public List<Funcionario> lista(){
+        
+            List<Funcionario> resultados = new ArrayList<Funcionario>();
+            Connection conn = Conexao.getConnection();
+            String sql = "select * from funcionarios";
+            
+            try{
+                
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery();
+                
+                while(rs.next()){
+                
+                    Funcionario a = new Funcionario();
                     a.setId(rs.getInt("id"));
-                    a.setNome(rs.getString("nome"));
-                    a.setNascimento(rs.getString("nascimento"));
-                    a.setCurso(rs.getString("curso"));
-                    a.setTelefone(rs.getString("telefone"));
-                    a.setTurno(rs.getString("turno"));
-                    a.setCpf(rs.getString("cpf"));
-                    a.setRg(rs.getString("rg"));
-                    a.setSexo(rs.getString("sexo"));
-                    a.setStatus(rs.getString("status"));
-                    a.setCidade(rs.getString("cidade"));
-                    
+                    a.setNome(rs.getString("nome"));   
                     resultados.add(a);
                 }
                 
